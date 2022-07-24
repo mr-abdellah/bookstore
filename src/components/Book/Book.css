@@ -22,10 +22,20 @@
   margin: 0;
 }
 
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.status li {
+  margin-bottom: 2%;
+}
+
 .info li:nth-child(1) {
   color: #121212;
   opacity: 0.5;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.875rem;
   font-weight: bold;
 }
@@ -35,7 +45,7 @@
   font-size: 1.375rem;
   font-weight: bold;
   font-stretch: normal;
-  color:#121212;
+  color: #121212;
 }
 
 .info li:nth-child(3) {
@@ -69,11 +79,6 @@
   cursor: pointer;
 }
 
-li {
-  padding: 0;
-  list-style: none;
-}
-
 .divider {
   width: 0.125rem;
   height: 1.5rem;
@@ -84,7 +89,6 @@ li {
 .status li:nth-child(1) {
   width: 7.875rem;
   height: 1.125rem;
-  margin: 0.063rem 3.625rem 0 3.688rem;
   opacity: 0.5;
   font-family: 'Roboto', sans-serif;
   font-size: 0.813rem;
@@ -99,7 +103,6 @@ li {
 .statu li:nth-child(2) {
   width: 4.688rem;
   height: 1.313rem;
-  margin: 0.438rem 6.813rem 0.25rem 3.688rem;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-weight: 300;
@@ -123,7 +126,6 @@ li {
   color: #fff;
   width: 11.5rem;
   height: 2.063rem;
-  margin: 0.75rem 0 0.563rem 3.688rem;
   padding: 0.438rem 1.188rem 0.5rem 1.375rem;
   border-radius: 3px;
   background-color: #0290ff;

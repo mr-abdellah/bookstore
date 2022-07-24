@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 nav {
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 2fr 2fr 5fr;
-    align-items: center;
-    border-bottom: solid 1px #e8e8e8;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 2fr 2fr 5fr;
+  align-items: center;
+  border-bottom: solid 1px #e8e8e8;
 }
 
 h2 {
-    font-weight: bold;
-    color: #0290ff;
+  font-weight: bold;
+  color: #0290ff;
 }
 
 .nav-links {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
 }
 
 a {
@@ -32,17 +32,17 @@ a {
 a.active {
   color: #121212;
   opacity: 1;
-
 }
 
 #userBtn {
-    display: flex;
-    justify-content: end;
-    background: transparent;
-    border: none;
-    outline: none;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 #userImg {
-    width: 10%;
+  width: 6%;
 }
