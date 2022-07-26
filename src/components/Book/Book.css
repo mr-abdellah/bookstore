@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.bookContainer {
+  display: grid;
+  grid-template-areas: 'info percentage update';
+  width: 90%;
+  padding: 1%;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  background-color: #fafafa;
+  margin: 2% 0;
+}
+
+.part1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.status li {
+  margin-bottom: 2%;
+}
+
+.info li:nth-child(1) {
+  color: #121212;
+  opacity: 0.5;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.info li:nth-child(2) {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.375rem;
+  font-weight: bold;
+  font-stretch: normal;
+  color: #121212;
+}
+
+.info li:nth-child(3) {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+}
+
+.CRE {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.CRE button {
+  width: 4.563rem;
+  height: 1.188rem;
+  margin: 0.188rem 0.938rem 0.125rem 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4386bf;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.divider {
+  width: 0.125rem;
+  height: 1.5rem;
+  margin: 0.75rem 1.063rem 0 0.938rem;
+  background: #e8e8e8;
+}
+
+.percentage {
+  display: flex;
+  align-items: center;
+}
+
+.completed {
+  margin-left: 2%;
+}
+
+.completed p {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #121212;
+  font-size: 2rem;
+}
+
+.completed p:nth-child(2) {
+  opacity: 0.5;
+  font-size: 0.876rem;
+}
+
+.status li:nth-child(1) {
+  width: 7.875rem;
+  height: 1.125rem;
+  opacity: 0.5;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+}
+
+.statu li:nth-child(2) {
+  width: 4.688rem;
+  height: 1.313rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.4px;
+  color: #121212;
+  white-space: nowrap;
+}
+
+.status button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #fff;
+  width: 11.5rem;
+  height: 2.063rem;
+  padding: 0.438rem 1.188rem 0.5rem 1.375rem;
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: none;
+}
