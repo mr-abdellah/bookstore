@@ -1,4 +1,5 @@
 import './Book.css';
+import './Circle.css';
 
 export default function Book(BookInfo) {
   const { title, author } = BookInfo;
@@ -19,6 +20,14 @@ export default function Book(BookInfo) {
           <div className="divider" />
           <button type="button" id="edit">Edit</button>
         </ul>
+      </div>
+
+      <div className="percentage">
+        <div className="ratio" style={{ '--ratioDeg': 0.65 }} />
+        <div className="completed">
+          <p id="percentage">64%</p>
+          <p>Completed</p>
+        </div>
       </div>
 
       <ul className="status">
