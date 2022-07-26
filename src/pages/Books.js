@@ -1,13 +1,13 @@
 import React from 'react';
 import BookList from '../components/BookList/BookList';
-import BookInfo from '../components/BookInfo/BookInfo';
+import Form from '../components/Form/Form';
 import './Books.css';
 
 export default function Books() {
   return (
     <div className="container">
       <BookList />
-      <BookInfo />
+      <Form />
     </div>
   );
 }
