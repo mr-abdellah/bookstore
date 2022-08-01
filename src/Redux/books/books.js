@@ -1,7 +1,10 @@
-const ADD_BOOK = 'addBook';
-const REMOVE_BOOK = 'removeBook';
+const ADD_BOOK = 'bookstore/books/ADD_BOOK';
+const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
 
 let initialCount = 0;
+const initialState = {
+  books: [],
+};
 /* eslint-disable no-plusplus */
 const addBook = (title) => ({
   type: ADD_BOOK,
@@ -14,7 +17,7 @@ const removeBook = (id) => ({
   id,
 });
 
-const bookReducer = (state = [], action) => {
+const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [
