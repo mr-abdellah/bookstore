@@ -2,38 +2,36 @@ const ADD_BOOK = 'addBook';
 const REMOVE_BOOK = 'removeBook';
 
 let initialCount = 0;
-
+/* eslint-disable no-plusplus */
 const addBook = (title) => ({
-    type: ADD_BOOK,
-    id: ++initialCount,
-    title
-})
+  type: ADD_BOOK,
+  id: ++initialCount,
+  title,
+});
 
 const removeBook = (id) => ({
-    type: REMOVE_BOOK,
-    id
-})
+  type: REMOVE_BOOK,
+  id,
+});
 
 const bookReducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD_BOOK:
+      return [
+        ...state,
+        {
+          id: action.id,
+          title: action.title,
+        },
+      ];
 
-    switch (action.type) {
+    case REMOVE_BOOK:
+      return state.filter((book) => book.id !== action.id);
 
-        case ADD_BOOK:
-            return [
-                ...state,
-                {
-                    id: action.id,
-                    title: action.title
-                }
-            ];
+    default: return state;
+  }
+};
 
-        case REMOVE_BOOK:
-            return state.filter(book => book.id !== action.id)
-
-        default: return state
-    }
-}
-
-export {addBook, removeBook}
+export { addBook, removeBook };
 
 export default bookReducer;
