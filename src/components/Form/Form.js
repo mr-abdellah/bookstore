@@ -3,6 +3,7 @@ import './Form.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addBook } from '../../Redux/books/books';
+import { v4 as uuidv4 } from 'uuid';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -12,9 +13,17 @@ const Form = () => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('');
 
+
+  const newBook = {
+    title,
+    author,
+    id: uuidv4(),
+    category: 'fantasy',
+  } 
+
   const handleAddBook = (e) => {
     e.preventDefault();
-    dispatch(addBook({title,author}));
+    dispatch(addBook(newBook));
     setTitle('');
     setAuthor('');
   };

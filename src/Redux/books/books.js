@@ -1,59 +1,81 @@
-import { v4 as uuidv4 } from 'uuid';
-
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
+const LOADED_BOOK = 'bookstore/books/LOADED_BOOK';
 
-const initialState = {
-  books: [
-    {
-      id: uuidv4(),
-      title: 'Rich Dad Poor Dad',
-      author: 'Robert Kiyosaki',
+const initialState = [];
+
+export function booksLoaded(books) {
+  return {
+    type: LOADED_BOOK,
+    payload: books,
+  };
+}
+
+const addBook = (book) => async function addBookAsync(dispatch) {
+  const result = await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/FQcJl8BQUEjJZ87dvIFO/books', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
     },
-    {
-      id: uuidv4(),
-      title: 'Why We Sleep',
-      author: 'Matthew Walker',
-    },
-    {
-      id: uuidv4(),
-      title: 'The richest man in babylon',
-      author: 'George S. Clason',
-    },
-  ],
+    body: JSON.stringify({
+      item_id: book.id,
+      category: book.category,
+      title: book.title,
+      author: book.author,
+    }),
+  });
+  if (result.ok) {
+    dispatch({ type: ADD_BOOK, payload: book });
+  }
 };
 
-console.log(initialState.books);
-console.log(initialState.books.length);
-/* eslint-disable no-plusplus */
-const addBook = ({ title, author }) => ({
-  type: ADD_BOOK,
-  id: uuidv4(),
-  title,
-  author,
-});
+const removeBook = (id) => async function removeBookAsync(dispatch) {
+  const result = await fetch(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/FQcJl8BQUEjJZ87dvIFO/books/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({
+      item_id: id,
+    }),
+  });
+  if (result.ok) {
+    dispatch({ type: REMOVE_BOOK, payload: id });
+  }
+};
 
-const removeBook = (id) => ({
-  type: REMOVE_BOOK,
-  id,
-});
+export async function loadBooks(dispatch) {
+  try {
+    const result = await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/FQcJl8BQUEjJZ87dvIFO/books');
+    const data = await result.json();
+    const books = Object.keys(data).map((key) => ({
+      id: key,
+      ...data[key][0],
+    }));
+    if (books.length === 0) {
+      throw new Error('There are no books.');
+    }
+    dispatch(booksLoaded(books));
+  } catch (error) {
+    dispatch(booksLoaded([]));
+  }
+}
 
-const bookReducer = (state = initialState.books, action) => {
+const bookReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOADED_BOOK:
+      return action.payload;
+
     case ADD_BOOK:
-      return [
-        ...state,
-        {
-          id: action.id,
-          title: action.title,
-          author: action.author,
-        },
-      ];
+      return [action.payload, ...state];
 
     case REMOVE_BOOK:
-      return [...state.filter((book) => book.id !== action.id)];
+      return [
+        ...state.filter((book) => book.id !== action.payload),
+      ];
 
-    default: return state;
+    default:
+      return state;
   }
 };
 
