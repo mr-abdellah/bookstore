@@ -1,8 +1,16 @@
+import { useDispatch } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { removeBook } from '../../Redux/books/books';
 import './Book.css';
 import './Circle.css';
 
-export default function Book(BookInfo) {
-  const { title, author } = BookInfo;
+export default function Book({ title, author, id }) {
+  const dispatch = useDispatch();
+
+  const handleRemoveBook = () => {
+    dispatch(removeBook(id));
+  };
+
   return (
     <div className="bookContainer">
 
@@ -16,7 +24,7 @@ export default function Book(BookInfo) {
         <ul className="CRE">
           <button type="button" id="comments">Comments</button>
           <div className="divider" />
-          <button type="button" id="remove">Remove</button>
+          <button type="button" id="remove" onClick={handleRemoveBook}>Remove</button>
           <div className="divider" />
           <button type="button" id="edit">Edit</button>
         </ul>
@@ -39,3 +47,9 @@ export default function Book(BookInfo) {
     </div>
   );
 }
+
+Book.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+};

@@ -1,15 +1,32 @@
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
 
-let initialCount = 0;
+let initialCount = 1;
 const initialState = {
-  books: [],
+  books: [
+    {
+      id: 1,
+      title: 'Rich Dad Poor Dad',
+      author: 'Robert Kiyosaki',
+    },
+    {
+      id: 2,
+      title: 'Why We Sleep',
+      author: 'Matthew Walker',
+    },
+    {
+      id: 3,
+      title: 'The richest man in babylon',
+      author: 'George S. Clason',
+    },
+  ],
 };
 /* eslint-disable no-plusplus */
-const addBook = (title) => ({
+const addBook = ({ title, author }) => ({
   type: ADD_BOOK,
-  id: ++initialCount,
+  id: initialCount++,
   title,
+  author,
 });
 
 const removeBook = (id) => ({
@@ -17,7 +34,7 @@ const removeBook = (id) => ({
   id,
 });
 
-const bookReducer = (state = initialState, action) => {
+const bookReducer = (state = initialState.books, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [
@@ -25,6 +42,7 @@ const bookReducer = (state = initialState, action) => {
         {
           id: action.id,
           title: action.title,
+          author: action.author,
         },
       ];
 
