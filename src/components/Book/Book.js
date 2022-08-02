@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { removeBook } from '../../Redux/books/books';
 import './Book.css';
@@ -7,9 +7,13 @@ import './Circle.css';
 export default function Book({ title, author, id }) {
   const dispatch = useDispatch();
 
+  const books = useSelector((state) => state.book);
+
   const handleRemoveBook = () => {
     dispatch(removeBook(id));
+    console.log(books);
   };
+  console.log(books);
 
   return (
     <div className="bookContainer">

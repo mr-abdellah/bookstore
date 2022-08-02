@@ -1,30 +1,34 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
 
-let initialCount = 1;
 const initialState = {
   books: [
     {
-      id: 1,
+      id: uuidv4(),
       title: 'Rich Dad Poor Dad',
       author: 'Robert Kiyosaki',
     },
     {
-      id: 2,
+      id: uuidv4(),
       title: 'Why We Sleep',
       author: 'Matthew Walker',
     },
     {
-      id: 3,
+      id: uuidv4(),
       title: 'The richest man in babylon',
       author: 'George S. Clason',
     },
   ],
 };
+
+console.log(initialState.books);
+console.log(initialState.books.length);
 /* eslint-disable no-plusplus */
 const addBook = ({ title, author }) => ({
   type: ADD_BOOK,
-  id: initialCount++,
+  id: uuidv4(),
   title,
   author,
 });
@@ -47,7 +51,7 @@ const bookReducer = (state = initialState.books, action) => {
       ];
 
     case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.id);
+      return [...state.filter((book) => book.id !== action.id)];
 
     default: return state;
   }
